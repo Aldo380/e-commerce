@@ -1,0 +1,20 @@
+{
+  "frontend/src/App.tsx": "Main application component with TanStack Router setup, theme provider, profile setup dialog, and route definitions for all pages including products, cart, checkout, payment status, admin, orders, and donate.",
+  "frontend/src/hooks/useQueries.ts": "Custom React Query hooks for all backend operations including user profiles, products, cart management, orders, payment processing with Stripe and Coinbase ICP, and donation operations with useDonate and useGetDonations hooks.",
+  "frontend/src/components/Header.tsx": "Navigation header with logo, donate button with heart icon, cart icon with item count badge, orders link, admin link (for admins), user name display, and login/logout button.",
+  "frontend/src/components/Footer.tsx": "Simple footer component with copyright notice and caffeine.ai attribution link.",
+  "frontend/src/components/ProfileSetupDialog.tsx": "Modal dialog that prompts new users to enter their name on first login, preventing dismissal until profile is created.",
+  "frontend/src/components/ProductCard.tsx": "Reusable product card component displaying product image, name, description, price, and add-to-cart button with hover effects.",
+  "frontend/src/components/StripeSetupDialog.tsx": "Admin dialog for configuring Stripe payment integration with secret key and allowed countries input.",
+  "frontend/src/pages/ProductListingPage.tsx": "Homepage with hero banner and product grid displaying all available products with add-to-cart functionality.",
+  "frontend/src/pages/ProductDetailPage.tsx": "Individual product detail page with large image, full description, quantity selector, and add-to-cart button.",
+  "frontend/src/pages/CartPage.tsx": "Shopping cart page showing cart items with quantity controls, remove buttons, order summary, and checkout button.",
+  "frontend/src/pages/CheckoutPage.tsx": "Checkout page with payment method selection (Stripe or ICP crypto), order summary, and payment processing logic using PaymentMethod enum values correctly.",
+  "frontend/src/pages/PaymentSuccessPage.tsx": "Success page displayed after successful payment with links to view orders or continue shopping.",
+  "frontend/src/pages/PaymentFailurePage.tsx": "Failure page displayed when payment fails with options to retry or return to shop.",
+  "frontend/src/pages/OrdersPage.tsx": "User order and donation history page with tabbed interface displaying orders and donations separately, showing product details, status badges, payment method labels, donation amounts, messages, and empty states with call-to-action buttons.",
+  "frontend/src/pages/AdminPage.tsx": "Admin dashboard with tabs for managing products (add/edit/delete) and orders (view/update status), plus Stripe configuration, correctly handling PaymentMethod enum.",
+  "frontend/src/lib/cartStore.ts": "Zustand store for client-side cart state management with persistence, handling add/remove/update operations and item count.",
+  "frontend/src/index.css": "Global styles with OKLCH color system featuring a purple/blue primary color scheme for both light and dark modes.",
+  "frontend/src/pages/DonatePage.tsx": "Donation page with form for entering custom donation amount, optional message, payment method selection (Stripe or Coinbase ICP), and donation processing with proper validation and loading states."
+}

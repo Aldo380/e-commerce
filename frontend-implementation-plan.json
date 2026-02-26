@@ -1,0 +1,79 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Add Donation Feature to Store",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Add a donation button to the store header navigation that is visible to all users",
+      "acceptanceCriteria": [
+        "Donation button is visible in the Header component alongside other navigation elements",
+        "Button is styled consistently with the existing UI theme",
+        "Button is accessible to both authenticated and non-authenticated users"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Add a 'Donate' navigation button in the header navigation bar alongside the existing Orders and Admin links. The button should use a heart icon or similar to indicate its charitable purpose. Style it consistently with other navigation elements using Tailwind classes. Wire it to navigate to the /donate route using the router Link component. Ensure the button is visible to all users (both authenticated and guests)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Create a donation page that allows users to enter a custom donation amount and select a payment method (Stripe or Coinbase ICP)",
+      "acceptanceCriteria": [
+        "Page includes an input field for custom donation amount with validation",
+        "Payment method selection matches existing checkout flow (Stripe and Coinbase ICP options)",
+        "Clear call-to-action button to process the donation",
+        "Responsive design consistent with existing pages"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/DonatePage.tsx",
+          "operation": "create",
+          "description": "Create a new DonatePage component that displays a donation form. Include a numeric input field for the donation amount with validation (minimum $1, maximum reasonable limit). Add a dropdown or radio button group to select payment method (Stripe or Coinbase ICP), matching the design pattern from CheckoutPage. Include an optional text area for a donation message. Add a prominent 'Donate Now' call-to-action button. Use the useDonate mutation hook to submit the donation. Handle loading states during submission and show success/error toasts. Style the page with a centered card layout similar to CheckoutPage for consistency. Ensure responsive design with proper spacing and mobile-friendly controls."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Register the /donate route in the router configuration. Import DonatePage and add a new Route element that maps the path '/donate' to the DonatePage component. Place it alongside other routes like /cart, /checkout, and /orders."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Add React Query hooks for donation operations including creating donations and fetching donation history",
+      "acceptanceCriteria": [
+        "useDonation mutation hook for creating donations",
+        "useDonationHistory query hook for fetching user's donation history",
+        "Proper query invalidation after successful donation",
+        "Loading and error states handled consistently with existing hooks"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Add a useDonate mutation hook that calls actor.donate() with a DonationRequest parameter (amount, currency, paymentMethod, message). Include onSuccess callback to invalidate the 'donations' query key and show a success toast. Add a useDonations query hook that fetches the user's donation history by calling a backend method that returns an array of DonationRecord. Set enabled to require authentication (!!actor). Use queryKey ['donations'] for proper caching. Follow the existing pattern from useOrders for consistency in structure and error handling."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Add donation section to the Orders page showing user's donation history with amount, date, and payment method",
+      "acceptanceCriteria": [
+        "Separate tab or section in OrdersPage for viewing donations",
+        "Displays donation amount, timestamp, and payment method used",
+        "Shows empty state when user has no donations",
+        "Styled consistently with order history display"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/OrdersPage.tsx",
+          "operation": "modify",
+          "description": "Add a tabbed interface to OrdersPage with two tabs: 'Orders' and 'Donations'. Import and use the useDonations query hook. In the Donations tab, display a list of donation records showing amount formatted as currency, timestamp formatted as a readable date, payment method badge (Stripe or Coinbase ICP), and optional message if present. Show a loading skeleton while fetching donations. Display an empty state message ('No donations yet. Make your first donation!') with a link to /donate when the user has no donations. Style the donation list cards consistently with the order history cards, using similar spacing, borders, and typography. Ensure the tab switching maintains the page layout and responsiveness."
+        }
+      ]
+    }
+  ]
+}

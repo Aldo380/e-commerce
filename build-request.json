@@ -1,0 +1,112 @@
+{
+  "kind": "build_request",
+  "title": "Add donation button to store",
+  "projectName": "Shop with Heart",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Add a donation button to the store header navigation that is visible to all users",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-13"
+        ],
+        "quotes": [
+          "add a button to our store: donate button"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Donation button is visible in the Header component alongside other navigation elements",
+        "Button is styled consistently with the existing UI theme",
+        "Button is accessible to both authenticated and non-authenticated users"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Create a donation page that allows users to enter a custom donation amount and select a payment method (Stripe or Coinbase ICP)",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-13"
+        ],
+        "quotes": [
+          "add a button to our store: donate button"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Page includes an input field for custom donation amount with validation",
+        "Payment method selection matches existing checkout flow (Stripe and Coinbase ICP options)",
+        "Clear call-to-action button to process the donation",
+        "Responsive design consistent with existing pages"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Implement backend donation processing endpoint that creates a donation transaction record and handles payment processing through Stripe or Coinbase",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-13"
+        ],
+        "quotes": [
+          "add a button to our store: donate button"
+        ]
+      },
+      "acceptanceCriteria": [
+        "New donation method in main.mo that accepts amount and payment method",
+        "Integrates with existing Stripe payment flow for card donations",
+        "Integrates with existing Coinbase ICP flow for crypto donations",
+        "Returns transaction confirmation similar to order processing",
+        "Stores donation records with timestamp, amount, and payment method"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Add React Query hooks for donation operations including creating donations and fetching donation history",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-13"
+        ]
+      },
+      "acceptanceCriteria": [
+        "useDonation mutation hook for creating donations",
+        "useDonationHistory query hook for fetching user's donation history",
+        "Proper query invalidation after successful donation",
+        "Loading and error states handled consistently with existing hooks"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Add donation section to the Orders page showing user's donation history with amount, date, and payment method",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-13"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Separate tab or section in OrdersPage for viewing donations",
+        "Displays donation amount, timestamp, and payment method used",
+        "Shows empty state when user has no donations",
+        "Styled consistently with order history display"
+      ]
+    }
+  ],
+  "constraints": [
+    "Reuse existing Stripe and Coinbase payment integration logic",
+    "Do not modify useInternetIdentity.ts or useActor.ts hooks",
+    "Follow existing UI component patterns from the codebase"
+  ],
+  "nonGoals": [
+    "Recurring donation subscriptions",
+    "Donation tiers or reward systems",
+    "Third-party donation platform integrations beyond existing Stripe/Coinbase",
+    "Email receipts for donations"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

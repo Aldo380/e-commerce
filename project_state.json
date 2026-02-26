@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "E-commerce platform with ICP crypto payments and traditional payment support, integrating with Shopify storefront for clothing products (hoodies, apparel), with donation functionality",
+  "architectural_notes": [
+    "Shopify integration via Storefront API for product data sync",
+    "ICP-powered checkout flow linked from Shopify buy buttons",
+    "Support for both traditional and ICP crypto payment methods"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-add-a-donation-button-to-the-store-header-navigation-that-is-visible-to-all-users",
+      "title": "Add a donation button to the store header navigation that is visible to all users",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-donation-page-that-allows-users-to-enter-a-custom-donation-amount-and-select-a-payment-method-stripe-or-coinbase-icp",
+      "title": "Create a donation page that allows users to enter a custom donation amount and select a payment method (Stripe or Coinbase ICP)",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-react-query-hooks-for-donation-operations-including-creating-donations-and-fetching-donation-history",
+      "title": "Add React Query hooks for donation operations including creating donations and fetching donation history",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-donation-section-to-the-orders-page-showing-user-s-donation-history-with-amount-date-and-payment-method",
+      "title": "Add donation section to the Orders page showing user's donation history with amount, date, and payment method",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Shopify Storefront API integration for product sync and checkout linking",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Add donate button to store",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Implement backend donation processing endpoint that creates a donation transaction record and handles payment processing through Stripe or Coinbase",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Shop with Heart",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
